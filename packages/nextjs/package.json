@@ -1,0 +1,55 @@
+{
+  "name": "@suigate/nextjs",
+  "version": "0.1.0",
+  "description": "Server-side Sui entitlement authorization for Next.js",
+  "type": "module",
+  "files": [
+    "dist",
+    "README.md",
+    "NOTICE.md",
+    "LICENSE.md"
+  ],
+  "suigateRisk": {
+    "aiGenerated": true,
+    "humanAuditStatus": "not-audited",
+    "notice": "NOTICE.md"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./proxy": {
+      "types": "./dist/proxy.d.ts",
+      "import": "./dist/proxy.js"
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.test.json",
+    "test": "vitest run",
+    "format": "prettier --write src test *.json *.ts",
+    "format:check": "prettier --check src test *.json *.ts"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@suigate/core": "0.1.0",
+    "next": "16.3.8"
+  },
+  "dependencies": {
+    "server-only": "0.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "22.18.6",
+    "prettier": "3.9.9",
+    "typescript": "5.9.3",
+    "vitest": "5.0.3"
+  },
+  "license": "MIT"
+}

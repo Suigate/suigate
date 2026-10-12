@@ -1,0 +1,45 @@
+{
+  "name": "suigate",
+  "version": "0.1.0",
+  "description": "Developer tooling for Sui-native software entitlements",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "bin": {
+    "suigate": "bin/suigate.mjs"
+  },
+  "files": [
+    "bin",
+    "dist",
+    "README.md",
+    "NOTICE.md",
+    "LICENSE.md"
+  ],
+  "suigateRisk": {
+    "aiGenerated": true,
+    "humanAuditStatus": "not-audited",
+    "notice": "NOTICE.md"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json && node scripts/copy-move.mjs",
+    "typecheck": "tsc -p tsconfig.test.json",
+    "test": "vitest run",
+    "format": "prettier --write src test bin scripts *.json *.ts",
+    "format:check": "prettier --check src test bin scripts *.json *.ts"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@mysten/sui": "2.33.2",
+    "@suigate/core": "0.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "22.18.6",
+    "prettier": "3.9.9",
+    "typescript": "5.9.3",
+    "vitest": "5.0.3"
+  },
+  "license": "MIT"
+}

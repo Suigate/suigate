@@ -1,0 +1,6 @@
+[package]
+name = "suigate"
+edition = "2024"
+
+[dependencies]
+payment_kit = { git = "https://github.com/MystenLabs/sui-payment-kit.git", subdir = ".", rev = "34464974de849975872cc67f02715a98db3112ba" }

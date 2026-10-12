@@ -1,0 +1,11 @@
+{
+  "extends": "../../packages/core/tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "../..",
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "declaration": false,
+    "declarationMap": false
+  },
+  "include": ["src", "test", "../shared/config.ts", "../shared/model.ts"]
+}

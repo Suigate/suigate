@@ -1,0 +1,41 @@
+{
+  "name": "suigate-workspace",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/core",
+    "packages/react",
+    "packages/express",
+    "packages/nextjs",
+    "packages/cli",
+    "examples/react",
+    "examples/express",
+    "examples/nextjs"
+  ],
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "postinstall": "node packages/core/scripts/install-warning.mjs",
+    "notices": "node packages/core/scripts/package-notices.mjs",
+    "prebuild": "npm run notices",
+    "build": "npm run build -w @suigate/core && npm run build -w @suigate/react && npm run build -w @suigate/express && npm run build -w @suigate/nextjs && npm run build -w suigate && npm run build -w suigate-react-example && npm run build -w suigate-express-example && npm run build -w suigate-nextjs-example",
+    "pretest": "npm run notices && npm run build -w @suigate/core && npm run build -w @suigate/react && npm run build -w @suigate/express && npm run build -w @suigate/nextjs && npm run build -w suigate && npm run typecheck -w @suigate/react && npm run typecheck -w @suigate/express && npm run typecheck -w @suigate/nextjs && npm run typecheck -w suigate",
+    "test": "npm test -w @suigate/core && npm test -w @suigate/react && npm test -w @suigate/express && npm test -w @suigate/nextjs && npm test -w suigate && npm test -w suigate-react-example && npm test -w suigate-express-example && npm test -w suigate-nextjs-example",
+    "predev": "npm run build -w @suigate/core && npm run build -w @suigate/react",
+    "check": "npm run build && npm test",
+    "test:move": "sui move test --path move/suigate --build-env testnet --warnings-are-errors --coverage",
+    "build:move": "sui move build --path move/suigate --build-env testnet --warnings-are-errors",
+    "lint:move": "sui move lint --path move/suigate --build-env testnet --warnings-are-errors",
+    "check:all": "npm run check && npm run build:move && npm run lint:move && npm run test:move",
+    "dev": "npm run dev -w suigate-react-example",
+    "dev:express": "npm run dev -w suigate-express-example",
+    "dev:nextjs": "npm run dev -w suigate-nextjs-example"
+  },
+  "overrides": {
+    "@mysten/dapp-kit-core": "1.6.35",
+    "@mysten/wallet-standard": "0.21.31",
+    "@mysten/slush-wallet": "1.3.1"
+  },
+  "license": "MIT"
+}
